@@ -1,0 +1,79 @@
+
+<div ng-controller="inputCtrl">
+<div ng-controller="dropdownprojectCtrl">
+
+<div class="row">
+	 <div class="col-md-12 col-xs-12" id="projects">
+	 	<div class="row">
+			<div class="col-md-2"></div>
+	    	<div class="col-md-4 col-xs-12">
+	    		<div class="addHeader">
+					<p>Part 1/1</p>
+					<H1>Add a new project</H1>
+				</div>
+				<section class="contentAdd bgcolor-1">
+					<span class="inputAdd input--haruki">
+						<input class="input__field input__field--haruki" type="text" id="input-1" ng-model="projectname" />
+						<label class="input__label input__label--haruki" for="input-1">
+							<span class="input__label-content input__label-content--haruki">What is the name of the project?</span>
+						</label>
+					</span>
+				</section>
+					<div class="dropdown-container" id="dropdownproject" ng-class="{ show: listVisible }">
+					  <div class="dropdown-display" ng-click="show();" ng-class="{ activated: listVisible }">
+					    <span ng-if="selectedDate.name == 'Select phase'"  >Select a phase
+					    	<i class="fa fa-chevron-up" ng-class="{'fa-chevron-down': !listVisible, 'fa-chevron-up': listVisible}"></i>
+					 	</span>
+					    <span ng-if="selectedDate.name != 'Select phase'">{{selectedDate.date}}
+					    	<i class="fa fa-chevron-up" ng-class="{'fa-chevron-down': !listVisible, 'fa-chevron-up': listVisible}"></i>
+					 	</span>
+					  </div>
+					  <div class="dropdown-list">
+					    <div>
+					      <div ng-repeat="item in monthShowArray" ng-click="select(item)" ng-class="{ selected: isSelected(item) }">
+					        <span>{{property !== undefined ? item[property] : item.date}}</span>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				<section class="contentAdd bgcolor-1">
+					<span class="inputAdd input--haruki">
+						<input class="input__field input__field--haruki" type="text" id="input-2" ng-model="designers" />
+						<label class="input__label input__label--haruki" for="input-2">
+							<span class="input__label-content input__label-content--haruki">Name your follow designers in this project.</span>
+						</label>
+					</span>
+				</section>
+	    	</div> 
+	     	<div class="col-md-4 col-xs-12">
+	  			<section class="contentAdd bgcolor-1" id="textarea">
+					<span class="inputAdd input--haruki">
+						<textarea class="input__field input__field--haruki" id="brief" type="text" ng-model="brief"></textarea>
+						<label class="input__label input__label--haruki" id="removeLine" for="input-2">
+							<span class="input__label-content input__label-content--haruki">Project brief</span>
+						</label>
+					</span>
+				
+				</section>
+			
+
+	     	</div>
+  		</div>
+  		<div id="addmethodcolor">
+  			<center>
+  			 	<button class="custombtn" ng-click="add(projectname, designers, selectedDate.name, brief)" id="addbtnmethod">ADD</button>
+  			</center>
+  		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+	
+           

@@ -1,0 +1,25 @@
+<div ng-controller="headerCtrl"></div>
+   
+  <div class="row">
+
+     <div class="col-md-2">
+     </div>
+
+      <div class="col-md-8">
+        <section class="section section--menu" id="Prospero">
+          <nav class="menu menu--prospero">
+            <ul class="menu__list">
+              <img src="images/logo.png" alt="nej" id="logo">
+
+              <li class="menu__item menu__item--current"><a ui-sref="dashboard.project" class="menu__link">Projects</a></li>
+              <li class="menu__item"><a ui-sref="dashboard.toolkit" class="menu__link">Toolkit</a></li>
+              <li class="menu__item" ><a ui-sref="dashboard.user" id="user" class="menu__link" >{{name}}</a></li>
+            </ul>
+          </nav>
+        </section>
+      </div>
+     <div class="col-md-2">
+     </div>
+  </div>
+
+<div ui-view="main"></div>

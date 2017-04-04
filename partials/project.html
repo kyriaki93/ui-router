@@ -1,0 +1,62 @@
+
+<div class="row">
+	<div class="col-md-2" id="spaceL">
+	</div>
+	    <div class="col-md-8 col-xs-12" id="projects">
+				<section class="contentSearch bgcolor-1">
+					<span class="glyphicon glyphicon-search"></span>
+						<span class="inputSearch input--haruki">
+							<input class="input__field input__field--haruki" type="text" lang="search" id="input-1" ng-model="searchWord" placeholder="Search for projects and designers" />
+							<label class="input__label input__label--haruki" for="input-1">
+								<span class="input__label-content input__label-content--haruki" id="searchthingi"></span>
+							</label>
+						</span>
+				</section>
+				<section class="fitler">
+		            <ul class="filter_menu">
+		              <li class="filter_item"><a  id="myprojects" ng-click="filter('myprojects')" ng-class="{'active': selectedType == 'myprojects'}" >My projects</a></li>
+		              <li class="filter_item"><a  id="research" ng-click="filter('research')" ng-class="{'active': selectedType == 'research'}"> Research and Planning</a></li>
+		              <li class="filter_item"><a  id="concept" ng-click="filter('concept')"  ng-class="{'active': selectedType == 'concept'}">Concept and Prototype</a></li>
+		              <li class="filter_item"><a  id="productdesign" ng-click="filter('productdesign')"  ng-class="{'active': selectedType == 'productdesign'}">Product Design</a></li>
+		              <li class="filter_item"><a  id="all" ng-click="filter(null)"  ng-class="{'active': selectedType == null}">All</a></li>
+		            </ul>
+				</section>
+
+				<div class="grid">
+					<figure class="effect-zoe">
+						<a ui-sref="dashboard.addproject" ><img class="addimage" src="images/add.png" alt="nope"/></a>
+							<figcaption>
+								<h2>Add new project</h2>
+								<p class="icon-links">
+									<a href="#"></a>
+								</p>
+							</figcaption>			
+					</figure>
+					<figure class="effect-zoe" ng-repeat="project in filtered | filter:searchWord">
+						<a href="#/"><img src="images/rectangle.png" alt="nope"/></a>
+							<figcaption>
+								<h2>{{project.name}}</h2>
+								<p class="icon-links">
+									<!-- <a href="#"><span class="icon-heart"><img src="images/round_btn.png" id="addicon" style="width: 20px; height: 20px;"></span></a> -->
+								</p>
+								<p class="description">Flowing designers are in this project: {{project.creator}}, {{project.designers}}</p>
+							</figcaption>			
+					</figure>
+					<figure class="effect-zoe" ng-repeat="project in projects | filter:searchWord " ng-if="filtered.length == 0">
+						<a href="#/"><img src="images/rectangle.png" alt="nope"/></a>
+							<figcaption>
+								<h2>{{project.name}}</h2>
+								<p class="icon-links">
+									<!-- <a href="#"><span class="icon-heart"><img src="images/round_btn.png" id="addicon" style="width: 20px; height: 20px;"></span></a> -->
+								</p>
+								<p class="description">Flowing designers are in this project: {{project.creator}}, {{project.designers}}</p>
+							</figcaption>			
+					</figure>
+				</div>
+					
+	    </div> 
+  	<div class="col-md-2" id="spaceR">  			
+  	</div>
+ </div> 
+	
+	

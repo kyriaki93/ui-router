@@ -1,0 +1,49 @@
+  <!-- Static header -->
+<script src="js/input.js"></script>
+<div ng-controller="inputCtrl">
+</div>
+
+ <!-- start page -->
+<div class="row">
+  <div class="col-md-12 col-xs-12" id="homePage">
+	<center>
+	   <div class="col-md-4">
+  	   </div>
+	    <div class="row">
+	    	<div class="col-md-4 col-xs-12">
+					<section class="content bgcolor-1">
+						<span class="input input--haruki">
+							<input class="input__field input__field--haruki" type="text" id="input-1" ng-model="email" />
+							<label class="input__label input__label--haruki" for="input-1">
+								<span class="input__label-content input__label-content--haruki">Enter your email</span>
+							</label>
+						</span>
+						<span class="input input--haruki">
+							<input class="input__field input__field--haruki" type="password" id="input-2" ng-model="password" />
+							<label class="input__label input__label--haruki" for="input-2">
+								<span class="input__label-content input__label-content--haruki">Enter you password</span>
+							</label>
+						</span>
+					</section>
+					<button class="custombtn" ng-click="submit()" id="loginbtn">Login</button>
+
+            </div>
+        </div>
+       <div class="col-md-4">
+  	   </div>
+    </center>
+  </div>
+</div>
+              
+
+<!--
+
+				<h2>Login</h2>
+            		<div class="form-group">
+                		<input type="text" id="email" class="form-control" placeholder="Enter email" ng-model="email" /></br>
+                		<input type="password" id="password" class="form-control" placeholder="Password" ng-model="password" /></br>
+                		<button class="btn btn-default btn-block" ng-click="submit()">Login</button>
+            		</div>
+
+
+            		-->

@@ -1,0 +1,111 @@
+<div class="row">
+	<div class="col-md-2" id="spaceL">
+	</div>
+	    <div class="col-md-8 col-xs-12" id="projects">
+				<section class="contentSearch bgcolor-1">
+					<span class="glyphicon glyphicon-search"></span>
+						<span class="inputSearch input--haruki">
+							<input class="input__field input__field--haruki" type="text" lang="search" id="input-1" ng-model="searchWord" placeholder="Search for activities, materials, time or difficulty" />
+							<label class="input__label input__label--haruki" for="input-1">
+								<span class="input__label-content input__label-content--haruki" id="searchthingi"></span>
+							</label>
+						</span>
+				</section>
+				<section class="fitler">
+		            <ul class="filter_menu">
+		              <li class="filter_item"><a  id="all" ng-click="filter(null)" ng-class="{'active': selectedType == null}" >All</a></li>
+		              <li class="filter_item"><a  id="research" ng-click="filter('research')" ng-class="{'active': selectedType == 'research'}"> Research</a></li>
+		              <li class="filter_item"><a  id="insight" ng-click="filter('insight')"  ng-class="{'active': selectedType == 'insight'}">Insight</a></li>
+		              <li class="filter_item"><a  id="strategy" ng-click="filter('strategy')"  ng-class="{'active': selectedType == 'strategy'}">Strategy</a></li>
+		              <li class="filter_item"><a  id="proof" ng-click="filter('proof')"  ng-class="{'active': selectedType == 'proof'}">Proof of Concept</a></li>
+		              <li class="filter_item"><a  id="define" ng-click="filter('define')"  ng-class="{'active': selectedType == 'define'}">Define</a></li>
+		              <li class="filter_item"><a  id= "productdesign" ng-click="filter('productdesign')"  ng-class="{'active': selectedType == 'productdesign'}">Product Design</a></li>
+		              <li class="filter_item"><a  id="other" ng-click="filter('other')"  ng-class="{'active': selectedType == 'other'}">Other</a></li>
+		            </ul>
+				</section>
+
+				<div class="grid">
+					<figure class="effect-zoe">
+						<a ui-sref="dashboard.addmethod" ><img class="addimage" src="images/add.png" alt="nope" /></a>
+							<figcaption>
+								<h2>Add new method</h2>
+								<p class="icon-links">
+									<a href="#"></a>
+								</p>
+							</figcaption>			
+					</figure>
+					<figure class="effect-zoe" ng-repeat="method in filtered | filter:searchWord">
+						<a href="#/"><img src="images/rectangle.png" alt="nope"/></a>
+							<figcaption>
+								<h2>{{method.name}}</h2>
+								<p class="icon-links">
+									<a href="#"><span class="icon-heart"><img src="images/round_btn.png" id="addicon" style="width: 20px; height: 20px;"></span></a>
+								</p>
+								<p class="description">{{method.shortdesc}}</p>
+							</figcaption>			
+					</figure>
+					<figure class="effect-zoe" ng-repeat="method in methods | filter:searchWord " ng-if="filtered.length == 0">
+						<a href="#/"><img src="images/rectangle.png" alt="nope"/></a>
+							<figcaption>
+								<h2>{{method.name}}</h2>
+								<p class="icon-links">
+									<a href="#"><span class="icon-heart"><img src="images/round_btn.png" id="addicon" style="width: 20px; height: 20px;"></span></a>
+								</p>
+								<p class="description">{{method.shortdesc}}</p>
+							</figcaption>			
+					</figure>
+				</div>
+					
+	    </div> 
+  	<div class="col-md-2" id="spaceR">  			
+  	</div>
+ </div> 
+
+
+
+
+
+	
+           
+
+<!-- SearchBar -->
+<!--
+<div class='row' >
+  <div id="searchBar" class="col-md-12" style="background:#48cfae; width:100%; height:100%;">
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
+			<div class="input-group" style="padding:10% 0 10% 0;">
+            	<input ng-model="searchString" id="inputSearch" type="text" class="form-control" placeholder="Search and add your favorite books to your bookshelf!">
+            	<span class="input-group-btn">
+            	<div class="searchButton">
+					<button ng-click="search(searchString)" id="searchWord" class="btn btn-default" type="button" style="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></div>
+            	</span></p>
+			</div>
+		</div>
+	</div>
+</div>
+		-->	
+<!-- SearchResults -->
+<!--
+<div class="row">
+	<center>
+	<div class="col-md-12">
+		<div class="jumbotron">
+			<table style="border-spacing: 5px;">
+				<tr class="booksRow" ng-repeat="rows in chunks">
+				 	<td class="searchedBook" ng-repeat="book in rows"> 
+						<img class="bookThumbnail" style="margin-left: auto;margin-right: auto" ng-src="{{book.volumeInfo.imageLinks.smallThumbnail}}"></img> 
+						<div class="bookInfo">
+						<center><h5> {{book.volumeInfo.title.substring(0, 17)}}... </br></h5>
+						 <a class="btn btn-warning"  ng-click="addBookToLibrary(book.volumeInfo.industryIdentifiers); showAlert(book.volumeInfo.title)" ng-class="{ active: message }"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a></center>
+						</div>
+						
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	</center>
+</div>
+-->

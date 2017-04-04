@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-store" />
+
+    <!-- hiding url and makes changes the statusbar to black -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- icon on homescreen -->
+    <link rel="apple-touch-icon" href="http://iprog.clindstrom.se/images/icon.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="http://iprog.clindstrom.se/images/icon144.png" />
+
+    <link rel="apple-touch-startup-image" href="/images/image.png">
+
+
+    <title>UI-router</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.9.1/angularfire.min.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
+   
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+
+    <!-- Nice alert animation-->
+    <script src="jquery-confirm.min.js"></script>
+
+    <!-- menu js-->
+    <script src="classie.js"></script>
+    <script src="clipboard.min.js"></script>
+    <script src="menu.js"></script>
+    <script src="input.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="jquery-confirm.min.css">
+
+    <!-- Header CSS -->
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+
+    <!-- Input CSS -->
+    <link rel="stylesheet" type="text/css" href="css/set1.css" />
+
+    <!-- Card hover CSS-->
+     <link rel="stylesheet" type="text/css" href="css/set_card_hover.css" />
+
+     <!-- dropdown -->
+     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+
+    <!-- alert -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Adding Firebasing -->
+    <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script> 
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyANtWPkL4qozLYr3h3bc7i0H81J11b8K14",
+        authDomain: "apetool-e04b6.firebaseapp.com",
+        databaseURL: "https://apetool-e04b6.firebaseio.com",
+        storageBucket: "apetool-e04b6.appspot.com",
+        messagingSenderId: "1062896569224"
+      };
+      firebase.initializeApp(config);
+    </script> 
+
+    <!-- The application JavaScript code -->
+    <script src="helloworld.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/userCtrl.js"></script>
+    <script src="js/signinCtrl.js"></script>
+    <script src="js/model.js"></script>
+    <script src="js/headerCtrl.js"></script>
+    <script src="js/projectCtrl.js"></script>
+    <script src="js/toolkitCtrl.js"></script>
+    <script src="js/inputCtrl.js"></script>
+    <script src="js/addmethodCtrl.js"></script>
+    <script src="js/dropdownCtrl.js"></script>
+    <script src="js/addprojectCtrl.js"></script>
+    <script src="js/dropdownprojectCtrl.js"></script>
+    <script src="js/getUserCtrl.js"></script>
+
+  </head>
+
+
+  <body ng-app="app" ui-view="layout"></body>
+
+</html>
