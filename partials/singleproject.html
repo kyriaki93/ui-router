@@ -1,0 +1,137 @@
+<div ng-controller="inputCtrl">
+<link rel="stylesheet" type="text/css" href="css/transformation.css" />
+
+<div class="row">
+	 <div class="col-md-12 col-xs-12" id="projects">
+		<div class="row">
+			<div class="col-md-2">
+			</div>
+			    <div class="col-md-5">
+				    <div class="methoddesc">
+						<h5 style="text-transform: capitalize;">{{type}}</h5>
+						<h1>{{projectname}}</h1>
+						<p>{{brief}}</p>		
+					</div>
+			    </div>
+			    	<div class="col-md-3" id="projectinfo">
+				    	<img src="images/leverans.png" width="30px" alt="deliverables" style="float: left; margin-right: 10px;" /><p>This project will deliver {{deliverables}}</p>
+				    	<br>
+						<p style="float: left;" >This project is creted by {{creator}} and the following designers are in this project {{designers}}</p>
+			    	</div>
+			  	<div class="col-md-2">  			
+			  	</div>
+ 		</div> 
+ 		<div class="row">
+ 			<div class="col-md-2"></div>
+ 			<div class="col-md-8">
+ 				<div class="timelinestyle">
+ 			 		<h1>Timeline</h1>
+						<div class="timeline" >
+							<div class="child-element add" id="addActivity" ng-click="click()">
+								<center>
+									<h1>+</h1>
+									<p>Add Activity</p>
+								</center>
+							</div>
+							    <div class="child-element todo"  ng-repeat="tt in timelineTodo" data="{{tt.id}}" ng-click="click(tt.id)">
+							    	<h2>{{tt.methodname}}</h2>
+							    	<p>This is a planned activity, no insights yet.</p>
+							    </div>
+							    <div class="child-element doing" ng-repeat="td in timelineDoing" data="{{td.id}}" ng-click="click(td.id)">
+							    	<h2>{{td.methodname}}</h2>
+							    	<p>This activity is currently in motion, an insight is comming soon. </p>
+							    </div>
+							    <div class="child-element done" ng-repeat="tdone in timelineDone" data="{{tdone.id}}" ng-click="click(tdone.id)">
+							    	<h2>{{tdone.methodname}}</h2>
+							    	<p>{{tdone.insight}}</p>
+							    </div>
+						</div>
+ 			 	</div>
+ 			</div>
+ 		</div>
+ 	</div>
+ </div>
+
+			<div class="container">
+			 			<div class="dialog" id="dialog-1">
+							<div class="mover-wrap dialog__content">
+								<div class="handle"></div>
+								<div class="mover">
+									<div class="dialog__content-inner">
+										<div class="dialog__header">
+											<h4 ng-if=" header != 'Add activity' " style="margin-bottom: 0px;" >Edit activity</h4>
+											<h1>{{header}}</h1>
+											<button class="action action--close">
+												<i class="icon icon--cross" ng-click="close()"></i>
+												<span class="text-hidden">Close dialog</span>
+											</button>
+										</div>
+										<div class="dialog__body">
+											<div class="actions">
+												<div ng-show=" header == 'Add activity' ">
+														<div class="dropdown-container" id="dropdown-container" ng-class="{ show: listVisible }">
+														  <div class="dropdown-display" id="dropdown-display" ng-click="show();" ng-class="{ activated: listVisible }">
+														  
+														    <span ng-if="selectedDate == undefined  ">Select an activity
+														    	<i class="fa fa-chevron-up" ng-class="{'fa-chevron-down': !listVisible, 'fa-chevron-up': listVisible}"></i>
+														 	</span>
+														
+															<div>
+															    <span ng-if="selectedDate != undefined  ">{{selectedDate.name}}
+															    	<i class="fa fa-chevron-up" ng-class="{'fa-chevron-down': !listVisible, 'fa-chevron-up': listVisible}"></i>
+															 	</span>
+														 	</div>
+														  </div>
+														  <div class="dropdown-list" id="dropdown-list">
+														    <div>
+														      <div ng-repeat="item in allMethods" ng-click="select(item)" ng-class="{ selected: isSelected(item) }">
+														        <span>{{property !== undefined ? item[property] : item.name}}</span>
+														      </div>
+														    </div>
+														  </div>
+														</div>
+												</div>
+												<div class="mover__element">
+														<span class="action__title" ng-if=" header != 'Add activity' "  style="margin-top: 0px;" >Update the status of the activity?</span>
+														<span class="action__title" ng-if=" header == 'Add activity' " >What is the status of the activity?</span>
+														<div class="choosestatus">
+															<div>
+													            <input id="radio-1" class="radio-custom" name="todo" type="radio"  value="todo" ng-model="status" checked>
+													            <label for="radio-1" class="radio-custom-label">Todo</label>
+													        </div>
+													        <div>
+													            <input id="radio-2" class="radio-custom" name="doing" type="radio" value="doing" ng-model="status">
+													            <label for="radio-2" class="radio-custom-label">Doing</label>
+													        </div>
+													        <div>
+													            <input id="radio-3" class="radio-custom" name="done" type="radio" value="done" ng-model="status">
+													            <label for="radio-3" class="radio-custom-label">Done</label>
+													        </div>
+														</div>
+														<span ng-show="status == 'done'" class="action__title"  style="margin-top: 15px; float:left;" >What are the insights?</span>
+											  			<section ng-show="status == 'done'" class="bgcolor-1" id="insightarea">
+															<span class="inputtext input--haruki" id="inputinsight">
+																<textarea class="input__field input__field--haruki" id="insights" type="text" ng-model="insights"></textarea>
+																<label class="input__label input__label--haruki" id="removeLine" for="input-2">
+																	<span class="input__label-content input__label-content--haruki" id="insightlabel" ></span>
+																</label>
+															</span>
+														
+														</section>
+												</div>
+
+											</div>
+
+
+										</div>
+										<div class="dialog__footer">
+
+											<button class="custombtn" ng-show="header == 'Add activity'" ng-click="addTimeline(selectedDate.name, status, insights)" id="addbtn">ADD</button>
+											<button class="custombtn"  ng-show="header != 'Add activity'" ng-click="edit(status, insights)" id="addbtn">UPDATE</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+			</div>
+

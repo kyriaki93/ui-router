@@ -21,10 +21,12 @@
 				</section>
 					<div class="dropdown-container" id="dropdownproject" ng-class="{ show: listVisible }">
 					  <div class="dropdown-display" ng-click="show();" ng-class="{ activated: listVisible }">
-					    <span ng-if="selectedDate.name == 'Select phase'"  >Select a phase
+
+					    <span ng-if="selectedDate == undefined"  >Select a phase
 					    	<i class="fa fa-chevron-up" ng-class="{'fa-chevron-down': !listVisible, 'fa-chevron-up': listVisible}"></i>
 					 	</span>
-					    <span ng-if="selectedDate.name != 'Select phase'">{{selectedDate.date}}
+
+					    <span ng-if="selectedDate != undefined">{{selectedDate.date}}
 					    	<i class="fa fa-chevron-up" ng-class="{'fa-chevron-down': !listVisible, 'fa-chevron-up': listVisible}"></i>
 					 	</span>
 					  </div>

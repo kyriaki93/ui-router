@@ -49,10 +49,56 @@ a:focus {
 
 }
 
-.custombtn:focus {
-  outline:0;
+.checkbox-custom, .radio-custom {
+    opacity: 0;
+    position: absolute;   
 }
 
+.checkbox-custom, .checkbox-custom-label, .radio-custom, .radio-custom-label a{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.checkbox-custom-label, .radio-custom-label {
+    position: relative;
+}
+
+.checkbox-custom + .checkbox-custom-label:before, .radio-custom + .radio-custom-label:before {
+    content: '';
+    background: #fff;
+    border: 2px solid #ffcc00;
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    padding: 2px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.checkbox-custom:checked + .checkbox-custom-label:before {
+    background: #ffcc00;
+    box-shadow: inset 0px 0px 0px 4px #fff;
+}
+
+.radio-custom + .radio-custom-label:before {
+}
+
+.radio-custom:checked + .radio-custom-label:before {
+    background: #ffcc00;
+    box-shadow: inset 0px 0px 0px 4px #fff;
+}
+
+.choosestatus{
+  text-align: left;
+  margin-top: 30px;
+}
+
+label{
+  font-size: 1.5em;
+}
 .custombtn {
     background: none;
     height: 70px;
@@ -68,10 +114,10 @@ a:focus {
     text-align: center;
     margin: 0 0 0 0;
     color: #ffcc00;
-	font-weight: bold;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	-webkit-appearance: none; /* for box shadows to show on iOS */
-	letter-spacing: 0.1em;
+	  font-weight: bold;
+	  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	  -webkit-appearance: none; /* for box shadows to show on iOS */
+	  letter-spacing: 0.1em;
 }
 
 .custombtn:hover  {
@@ -155,6 +201,10 @@ a:focus {
     position: relative;
     background-repeat: no-repeat;
 
+}
+
+*:focus {
+    outline: none;
 }
 
 /* search */
@@ -341,7 +391,7 @@ a:focus {
 }
 
 #addbtnmethod{
-    margin: 50px;
+    margin: 30px;
 }
 
 #addmethodcolor{
@@ -396,4 +446,304 @@ drop-down > div { float: left; width: calc(100% - 30px); height: 2.7em; }
 .addimage{
       bottom: 20px;
 }
+
+/* single method */
+.methoddesc h1{
+  margin-top: 0px;
+  margin-bottom: 2px;
+  font-size: 4em;
+  font-weight: bold;
+
+}
+
+.methoddesc p{
+  line-height: 2em;
+  margin-right: 50px;
+
+}
+
+.methoddesc h5{
+  margin-bottom: 0px;
+
+}
+
+.methoddesc{
+  margin-top: 60px;
+}
+
+
+#medthodinfo1, #medthodinfo2{
+  margin-top: 120px;
+}
+
+#medthodinfo1 h5, #medthodinfo2 h5{
+  font-weight: bold;
+  text-transform: capitalize;
+
+}
+
+#medthodinfo1 p, #medthodinfo2 p{
+  margin-bottom: 40px;
+  text-transform: capitalize;
+  
+}
+
+.media-heading {
+
+  font-weight: bold;
+
+}
+
+.media-body h2{
+  font-size: 30px !important;
+}
+
+.methodinsight h1{
+  margin-top: 0px;
+  margin-bottom: 2px;
+  font-size: 4em;
+  font-weight: bold;
+
+}
+
+.timelinestyle h1{
+  margin-top: 0px;
+  margin-bottom: 2px;
+  font-size: 4em;
+  font-weight: bold;
+
+}
+.timelinestyle {
+  margin-top: 60px;
+
+  
+}
+.methodinsight{
+  margin-top: 60px;
+}
+
+.methodinsight p{
+  line-height: 2em;
+  margin-right: 50px;
+
+}
+
+.media-object{
+  border-radius: 30px;
+}
+
+/* Signle Project */
+
+
+
+.timeline {
+    white-space: nowrap;
+    overflow-x: scroll;
+    width: 100%;
+    position: relative;
+    border-spacing: 10px 0;
+}
+
+.child-element {
+    min-width: 370px;
+    height: 260px;
+    display: table-cell;
+}
+
+.add {
+    border: 8px solid #D4D4D4;
+}
+
+.todo {
+    border: 8px solid #D4D4D4;
+    padding-right: 30px;
+    max-width: 370px;
+
+}
+
+
+.doing {
+    border: 8px solid #4D4D4D;
+    padding-right: 30px;
+    max-width: 370px;
+
+
+}
+
+.done {
+    background: #4D4D4D;
+    color: white;
+    padding-right: 30px;
+    max-width: 370px;
+
+
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+#projectinfo{
+    margin-top: 140px;
+}
+
+
+#projectinfo p{
+    line-height: 2em;
+}
+
+.todo h2, .doing h2, .done h2{
+    font-size: 2em !important;
+    padding-left: 30px;
+    padding-top: 30px;
+    font-weight: bold;
+    padding-right: 30px;
+
+  }
+
+.todo p, .doing p, .done p{
+    padding-left: 30px;
+    white-space: normal;
+  }
+
+.add h1, .add p, .todo p, .todo h2 {
+  color: #D4D4D4;
+}
+
+.child-element.add{
+  text-align: center;
+  vertical-align: middle;
+
+}
+
+.add:hover, .todo:hover, .doing:hover {
+    border-color: #ffcc00;
+    cursor: pointer;
+}
+
+.add:hover p, .todo:hover p, .doing:hover p, .add:hover h1, .todo:hover h2, .doing:hover h2{
+    color: #ffcc00;
+    cursor: pointer;
+}
+
+.done:hover{
+    background: #ffcc00;
+    cursor: pointer;
+}
+
+#addbtn{
+  margin: 0 30px 30px 30px;
+}
+
+
+
+.radioButtondemoBasicUsage body {
+  padding: 20px; }
+
+.radioButtondemoBasicUsage hr {
+  margin-left: -20px;
+  opacity: 0.3; }
+
+.radioButtondemoBasicUsage md-radio-group {
+  width: 150px; }
+
+.radioButtondemoBasicUsage p:last-child {
+  padding-bottom: 50px; }
+
+.radioButtondemoBasicUsage [ng-controller] {
+  padding: 0 20px; }
+
+.radioButtondemoBasicUsage .radioValue {
+  margin-left: 5px;
+  color: #0f9d58;
+  font-weight: bold;
+  padding: 5px; }
+
+.radioButtondemoBasicUsage md-icon {
+  margin: 0 20px 20px;
+  width: 128px;
+  height: 128px; }
+
+.radioButtondemoBasicUsage .ipsum {
+  color: saddlebrown;
+  font-size: 0.9em; }
+
+  #dropdown-display{
+    width: 100%;
+    color: #444444;
+    margin-left: 0px;
+    font-weight: bold;
+    height: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 40px;
+
+  }
+
+  #dropdown-display > span{
+    font-size: 1em;
+  }
+  #dropdown-list{
+    color: #444444;
+    width: 100%;
+    background: #ffffff;
+  }
+
+  #dropdown-list > div > div {
+    background: #ffffff;
+    margin-left: 0px;
+    font-size: 1em;
+    padding-bottom: 15px;
+  }
+
+  #dropdown-list > div {
+      width: 100%;
+  }
+
+  span.action__title{
+    margin-top: 100px;
+  }
+
+  #dropdown-container{
+    margin-top: 0px;
+  }
+
+
+#insightarea{
+  margin-top: 0px;
+}
+
+#insights{
+  border: 4px solid #444444;
+  height: 300px;
+  padding-left: 0.5em;
+  padding-top: 0.5em;
+
+}
+
+#insightlabel{
+  font-size: 3em;
+  padding-left: 0.5em;
+  padding-top: 0.5em;
+
+}
+
+.inputtext{
+  width: 100%;
+}
+
+span#inputinsight {
+    margin: 0px;
+}
+
+/* user page */
+
+.profile{
+  border-radius:  2000px;
+  margin-top: 30px;
+}
+
+.userinfo{
+  margin-top: 100px;
+}
+
 

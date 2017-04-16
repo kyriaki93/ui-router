@@ -4,6 +4,8 @@ app.controller('inputCtrl', function($scope) {
 
       (function() {
         // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+        var input = document.querySelectorAll('input');
+
         if (!String.prototype.trim) {
           (function() {
             // Make sure we trim BOM and NBSP
@@ -16,10 +18,9 @@ app.controller('inputCtrl', function($scope) {
 
         [].slice.call( document.querySelectorAll( '.input__field' ) ).forEach( function( inputEl ) {
           // in case the input is already filled..
-          if( inputEl.value.trim() !== '' ) {
+          if( inputEl.value.trim() !== '' || $(input).attr('placeholder') != undefined) {
             classie.add( inputEl.parentNode, 'input--filled' );
           }
-
           // events:
           inputEl.addEventListener( 'focus', onInputFocus );
           inputEl.addEventListener( 'blur', onInputBlur );

@@ -3,7 +3,6 @@ app.controller('addmethodCtrl', function($scope, $state) {
   
 		var ref = firebase.database().ref();
 		var refMethod = firebase.database().ref('Methods');
-		var newMethodKey = firebase.database().ref().child('Methods').push().key;
 
 		$scope.selectedOption = null;
 
@@ -25,7 +24,7 @@ app.controller('addmethodCtrl', function($scope, $state) {
     			time: time,
     			group: group,
     			longdesc: longdesc,
-    			id: newMethodKey
+    			id: newMethod.key
 			});
 
 			//window.location = 'http://kyriakis.se' + window.location.pathname + '#/toolkit';

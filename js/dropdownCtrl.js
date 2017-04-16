@@ -25,10 +25,6 @@ app.controller('dropdownCtrl', function($scope, $rootScope) {
                                          
 
     $scope.monthShowArray = [{
-      'name': undefined,
-      'date': 'Select phase'
-
-    },{
       'name': 'research',
       'date':'Research'
     },{
@@ -51,8 +47,5 @@ app.controller('dropdownCtrl', function($scope, $rootScope) {
       'date':'Other'
        
     }]
-
-    $scope.selectedDate = $scope.monthShowArray[0];
-
 
 });

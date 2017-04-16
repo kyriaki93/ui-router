@@ -1,38 +1,43 @@
 
-app.controller('getUserCtrl', function($scope) {
+app.controller('getUserCtrl', function($scope, $state) {
   
   
+var user = firebase.auth().currentUser;
 
-		
-});
+if (user != null) {
+  user.providerData.forEach(function (profile) {
+  	$scope.username = profile.displayName;
+  	$scope.profileURL = profile.photoURL;
 
-  
+		if(!$scope.$$phase){
 
-
-/*dinnerPlannerApp.controller('userCtrl', function($scope, $route, $routeParams, $location,Dinner) {
-  
-  //connect to firebase
-  var ref = new Firebase("https://dazzling-torch-7020.firebaseio.com");
-		
-		//login user
-		//Function som går igång när knappen scope är klickad på
-		$scope.submit = function(){
-			ref.authWithPassword({
-  			email    : $scope.email,
-  			password : $scope.password
-			}, function(error, authData) {
-  			if (!error) {
-   		    	window.location = 'http://kyriakis.se/ape1/#/library';
-  				
-  			} else {
-				//$("#state").html("Login Failed!", error);
-				title = "Error"
-				content = ""+error+"";
-				Dinner.alerts(title,content);
-    			
-  			}
-			
-		});
+			$scope.$apply();
 		}
+
+    console.log("  Name: "+profile.displayName);
+    console.log("  Photo URL: "+profile.photoURL);
+  });
+}
+
+$scope.update = function(username, profileURL){
+
+
+	user.updateProfile({
+	  displayName: username,
+	  photoURL: profileURL
+	}).then(function() {
+
+		$scope.username = username;
+  		$scope.profileURL = profileURL;
+  		var displayName = username;
+  		var photoURL = profileURL;
+		$state.reload();
+
+	}, function(error) {
+	  // An error happened.
+	});
+}
+		
 });
-*/
+
+  

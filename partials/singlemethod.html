@@ -1,0 +1,130 @@
+
+<div class="row">
+	 <div class="col-md-12 col-xs-12" id="projects">
+		<div class="row">
+			<div class="col-md-2">
+			</div>
+			    <div class="col-md-6">
+				    <div class="methoddesc">
+						<img id="trigger-dialog" src="images/addbtn.png" alt="addbtn" width="20px" style="margin-right: 10px; float:left;cursor: pointer;" ><h4>Add this method to a project</h4>
+						<h1>{{methodname}}</h1>
+						<p>{{longdesc}}</p>		
+					</div>
+			    </div>
+			    	<div class="col-md-1" id="medthodinfo1">
+				    	<h5>Materials needed</h5><p>{{materials}}</p>
+				    	<h5>Project phase</h5><p>{{type}}</p>
+				    	<h5>Used in</h5><p>{{used}} projects</p>		
+			    	</div>
+				    <div class="col-md-1" id="medthodinfo2">
+					    <h5>Suggested time</h5><p>{{time}}</p>
+					    <h5>Participants</h5><p>{{group}}</p>
+					    <h5>Level of difficulty</h5><p>{{effort}}</p>
+				    </div> 
+			  	<div class="col-md-2">  			
+			  	</div>
+ 		</div> 
+ 		<div class="row">
+ 			<div class="col-md-2"></div>
+ 			<div class="col-md-6">
+ 				<div class="methodinsight">
+ 					<div>
+	 			 		<h1>Insights</h1>
+	 			 		<p ng-if="insights.length == 0">There are no insights yet.</p>
+	 			 	</div>
+					<div class="media" ng-repeat="insight in insights" ng-if="insights.length != 0">
+					  <div class="media-left">
+					    <a href="#">
+					      <img class="media-object" witdh="40px" height="40px" ng-src="{{insight.creatorImg}}" alt="...">
+					    </a>
+					  </div>
+					  <div class="media-body">
+					  	<h2 class="media-heading">{{insight.projectname}}</h2>
+					    <h4 class="media-heading">{{insight.creator}}</h4>
+					    <p>{{insight.insight}}</p>
+					  </div>
+					</div>
+ 			 	</div>
+ 			</div>
+ 		</div>
+ 	</div>
+ </div>
+	
+			<div class="container">
+			 			<div class="dialog" id="dialog-1">
+							<div class="mover-wrap dialog__content">
+								<div class="handle"></div>
+								<div class="mover">
+									<div class="dialog__content-inner">
+										<div class="dialog__header">
+											<h4 style="margin-bottom: 0px;">Add this activity to your project</h4>
+											<h1>{{methodname}}</h1>
+											<button class="action action--close">
+												<i class="icon icon--cross"></i>
+												<span class="text-hidden">Close dialog</span>
+											</button>
+										</div>
+										<div class="dialog__body">
+											<div class="actions">
+
+														<div class="dropdown-container" id="dropdown-container" ng-class="{ show: listVisible }">
+														  <div class="dropdown-display" id="dropdown-display" ng-click="show();" ng-class="{ activated: listVisible }">
+														    
+														    <span ng-if="selectedDate == undefined ">Select your project
+														    	<i class="fa fa-chevron-up" ng-class="{'fa-chevron-down': !listVisible, 'fa-chevron-up': listVisible}"></i>
+														 	</span>
+														
+															<div>
+															    <span  ng-if="selectedDate != undefined " >{{selectedDate.name}}
+															    	<i class="fa fa-chevron-up" ng-class="{'fa-chevron-down': !listVisible, 'fa-chevron-up': listVisible}"></i>
+															 	</span>
+														 	</div>
+														  </div>
+														  <div class="dropdown-list" id="dropdown-list">
+														    <div>
+														      <div ng-repeat="item in myProjects" ng-click="select(item)" ng-class="{ selected: isSelected(item) }">
+														        <span>{{property !== undefined ? item[property] : item.name}}</span>
+														      </div>
+														    </div>
+														  </div>
+														</div>
+
+												<div class="mover__element">
+														<span class="action__title">What is the status of the activity?</span>
+														<div class="choosestatus">
+															<div>
+													            <input id="radio-1" class="radio-custom" name="todo" type="radio"  value="todo" ng-model="status" checked>
+													            <label for="radio-1" class="radio-custom-label">Todo</label>
+													        </div>
+													        <div>
+													            <input id="radio-2" class="radio-custom" name="doing" type="radio" value="doing" ng-model="status">
+													            <label for="radio-2" class="radio-custom-label">Doing</label>
+													        </div>
+													        <div>
+													            <input id="radio-3" class="radio-custom" name="done" type="radio" value="done" ng-model="status">
+													            <label for="radio-3" class="radio-custom-label">Done</label>
+													        </div>
+														</div>
+											  			<section ng-show="status == 'done'" class="bgcolor-1" id="insightarea">
+															<span class="inputtext input--haruki" id="inputinsight">
+																<textarea class="input__field input__field--haruki" id="insights" type="text" ng-model="comments"></textarea>
+																<label class="input__label input__label--haruki" id="removeLine" for="input-2">
+																	<span class="input__label-content input__label-content--haruki" id="insightlabel" >What are the insights?</span>
+																</label>
+															</span>
+														
+														</section>
+												</div>
+
+											</div>
+
+
+										</div>
+										<div class="dialog__footer">
+											<button class="custombtn" ng-click="addTimeline(selectedDate.name, status, comments)" id="addbtn">ADD</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+			</div>

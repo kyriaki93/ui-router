@@ -1,0 +1,100 @@
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'codropsicons';
+	src:url('../fonts/codropsicons/codropsicons.eot');
+	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+}
+
+*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
+.clearfix:before, .clearfix:after {display: table;  content: ''; }
+.clearfix:after { clear: both; }
+
+body {
+	font-family: 'Avenir Next', 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+a {
+	outline: none;
+	color: #aaa;
+	text-decoration: none;
+}
+
+.demo-1 { background: #D9EDF7; color: #4F5B61; }
+.demo-1 a { color: #647FEA; }
+.demo-1 a:hover, .demo-1 a:focus { color: #333; }
+
+.demo-2 { background: #2a2a2a; color: #5C615C; }
+.demo-2 a { color: #6A9D6A; }
+.demo-2 a:hover, .demo-2 a:focus { color: #fff; }
+
+.container {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	text-align: center;
+}
+
+.hidden {
+	position: absolute;
+	overflow: hidden;
+	width: 0;
+	height: 0;
+	pointer-events: none;
+}
+
+.info {
+	padding: 0 1em 2em;
+	margin: 0;
+	line-height: 1.31;
+}
+
+
+
+
+/* Demo links */
+.codrops-demos {
+	margin: 1em 0 0;
+	font-size: 0.85em;
+}
+
+.codrops-demos a {
+	display: inline-block;
+	font-weight: bold;
+	margin: 0 0.5em;
+}
+
+.codrops-demos a.current-demo {
+	color: #595F59;
+}
+
+/* Content */
+.content {
+	padding: 5em 0 6em;
+}
+
+.button {
+	background: #647FEA;
+	padding: 1em 2em;
+	margin: 0;
+	color: #fff;
+	font-family: 'Avenir Next', 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+	border: none;
+	font-size: 1.15em;
+	font-weight: bold;
+	display: inline-block;
+	border-radius: 2px;
+}
+
+.button:focus {
+	outline: none;
+}
+
+.button:hover {
+	background: #637AD5;
+}

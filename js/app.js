@@ -33,12 +33,30 @@ var app = angular.module('app', ['ui.router', 'firebase']);
                 }
             }
         })
+        .state('dashboard.method', {
+            url: '/method/:id',
+            views: {
+                main: {
+                    controller: 'singlemethodCtrl',
+                    templateUrl: 'partials/singlemethod.html'
+                }
+            }
+        })
         .state('dashboard.project', {
             url: '/project',
             views: {
                 main: {
                     controller: 'projectCtrl',
                     templateUrl: 'partials/project.html'
+                }
+            }
+        })
+        .state('dashboard.thisproject', {
+            url: '/thisproject/:id',
+            views: {
+                main: {
+                    controller: 'singleprojectCtrl',
+                    templateUrl: 'partials/singleproject.html'
                 }
             }
         })

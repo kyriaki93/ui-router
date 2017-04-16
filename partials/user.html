@@ -1,12 +1,48 @@
 
-  <div class="row">
-    <div class="col-md-12 col-xs-12" id="projects">
-      
-      <h1>Här ska metoder in</h1>
+<div ng-controller="inputCtrl">
 
-    </div> 
-  </div> 
+<div class="row">
+	 <div class="col-md-12 col-xs-12" id="projects">
+		<div class="row">
+			<div class="col-md-2">
+			</div>
+			    <div class="col-md-2">
+				    <div class="methoddesc">
+						<h1>Profil</h1>
 
+						<img ng-if="profileURL == null" class="profile" witdh="270px" height="270px" ng-src="images/rectangle.png" alt="profileimage">
+						<img ng-if="profileURL != null" class="profile" witdh="270px" height="270px" ng-src="{{profileURL}}" alt="profileimage">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="userinfo">
+						<section class="contentAdd bgcolor-1">
+							<span class="inputAdd input--haruki">
+								<input class="input__field input__field--haruki" type="text" id="input-2" ng-model="username" placeholder="{{username}}" />
+								<label class="input__label input__label--haruki" for="input-2">
+									<span class="input__label-content input__label-content--haruki">What is your name?</span>
+								</label>
+							</span>
+						</section>
+						<section class="contentAdd bgcolor-1">
+							<span class="inputAdd input--haruki">
+								<input class="input__field input__field--haruki" type="text" id="input-2" ng-model="profileURL" placeholder="{{profileURL}}" />
+								<label class="input__label input__label--haruki" for="input-2">
+									<span class="input__label-content input__label-content--haruki">Want a profile pic? Add an url with ratio 1:1.</span>
+								</label>
+							</span>
+						</section>
+						<button class="custombtn" ng-click="update(username, profileURL)" id="update" style="margin: 50px 6px;" >SAVE</button>
+
+					</div>
+				</div>
+			  	<div class="col-md-4">  			
+			  	</div>
+		</div> 
+ 	 </div> 
+ 	</div>
+
+ </div>
 	
-           
+	
 

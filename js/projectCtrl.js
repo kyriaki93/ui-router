@@ -1,5 +1,5 @@
 
-app.controller('projectCtrl',function($scope) {
+app.controller('projectCtrl',function($scope, $state) {
  
   	$scope.projects = [];
   	$scope.filtered = [];
@@ -53,15 +53,24 @@ app.controller('projectCtrl',function($scope) {
 						console.log($scope.filtered);
 
 				}
-				/*
-				if(type == $scope.projects[i].type){
+				if( type == 'myprojects'){
 
+					if($scope.projects[i].creator == creator ){
 						$scope.filtered.push($scope.projects[i]);
 						console.log($scope.filtered);
-
+					}
 				}
-				*/		
+	
 			}		
 	}
+
+	/* Clicked project*/
+		$scope.gotoproject = function(id){
+
+			console.log(id);
+			$state.transitionTo('dashboard.thisproject', {id:id});
+
+
+		}
 
 });

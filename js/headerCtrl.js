@@ -8,7 +8,13 @@ app.controller('headerCtrl', function($scope) {
 
       user.providerData.forEach(function (profile) {
 
-          $scope.name = profile.email;
+          if(profile.displayName == null){
+
+              $scope.name = profile.email;
+
+          }else{
+              $scope.name = profile.displayName;
+          }
 
           if(!$scope.$$phase){
 

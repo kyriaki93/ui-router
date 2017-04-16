@@ -33,24 +33,28 @@
 							</figcaption>			
 					</figure>
 					<figure class="effect-zoe" ng-repeat="project in filtered | filter:searchWord">
-						<a href="#/"><img src="images/rectangle.png" alt="nope"/></a>
-							<figcaption>
-								<h2>{{project.name}}</h2>
-								<p class="icon-links">
-									<!-- <a href="#"><span class="icon-heart"><img src="images/round_btn.png" id="addicon" style="width: 20px; height: 20px;"></span></a> -->
-								</p>
-								<p class="description">Flowing designers are in this project: {{project.creator}}, {{project.designers}}</p>
-							</figcaption>			
+						<div ng-click="gotoproject(project.id)">
+							<a><img src="images/rectangle.png" alt="nope"/></a>
+								<figcaption>
+									<h2>{{project.name}}</h2>
+									<p class="icon-links">
+										<!-- <a href="#"><span class="icon-heart"><img src="images/round_btn.png" id="addicon" style="width: 20px; height: 20px;"></span></a> -->
+									</p>
+									<p class="description">Flowing designers are in this project: {{project.creator}}, {{project.designers}}</p>
+								</figcaption>	
+							</div>		
 					</figure>
 					<figure class="effect-zoe" ng-repeat="project in projects | filter:searchWord " ng-if="filtered.length == 0">
-						<a href="#/"><img src="images/rectangle.png" alt="nope"/></a>
-							<figcaption>
-								<h2>{{project.name}}</h2>
-								<p class="icon-links">
-									<!-- <a href="#"><span class="icon-heart"><img src="images/round_btn.png" id="addicon" style="width: 20px; height: 20px;"></span></a> -->
-								</p>
-								<p class="description">Flowing designers are in this project: {{project.creator}}, {{project.designers}}</p>
-							</figcaption>			
+						<div ng-click="gotoproject(project.id)">
+							<a><img src="images/rectangle.png" alt="nope"/></a>
+								<figcaption>
+									<h2>{{project.name}}</h2>
+									<p class="icon-links">
+										<!-- <a href="#"><span class="icon-heart"><img src="images/round_btn.png" id="addicon" style="width: 20px; height: 20px;"></span></a> -->
+									</p>
+									<p class="description">Flowing designers are in this project: {{project.creator}}, {{project.designers}}</p>
+								</figcaption>
+							</div>	
 					</figure>
 				</div>
 					
