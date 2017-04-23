@@ -3,6 +3,7 @@ app.controller('projectCtrl',function($scope, $state) {
  
   	$scope.projects = [];
   	$scope.filtered = [];
+  	$scope.myprojects = [];
   	$scope.selectedType = 'myprojects';
 
 	const dbRefObject = firebase.database().ref().child('Projects');
@@ -14,9 +15,21 @@ app.controller('projectCtrl',function($scope, $state) {
 	//get which user is logged in
 	if (user != null) {
 
-		creator = user.email;
+	    user.providerData.forEach(function (profile) {
+
+	        if(profile.displayName == null){
+
+	            creator = profile.email;
+
+	        }else{
+	        	
+	            creator= profile.displayName;
+	        }
+
+	    });
 
 	}
+
 
 	dbRefObject.on('value', snap => {
 
@@ -25,15 +38,28 @@ app.controller('projectCtrl',function($scope, $state) {
 		for(var j in getAll){
 
 			$scope.projects.push(getAll[j]);
-			console.log($scope.projects);
+
+				if( $scope.selectedType == 'myprojects'){
+
+					//Split name of the one who is logged in
+    				var splittedName = (creator).toLowerCase().split(" ");
+
+    				// show my projects (either if you are the creator of the project or just a fellow designer)
+					if(getAll[j].creator == creator || String((getAll[j].designers).toLowerCase().split(" ")).match(String(splittedName)) ){
+						$scope.filtered.push(getAll[j]);
+						
+
+					}
+				}
+
 		}
+
+
 
 		if(!$scope.$$phase){
 
 			$scope.$apply();
 		}
-
-
 	});
 
 
@@ -50,24 +76,41 @@ app.controller('projectCtrl',function($scope, $state) {
 				if( (type == $scope.projects[i].type) ) {
 
 						$scope.filtered.push($scope.projects[i]);
-						console.log($scope.filtered);
+						
+						if(!$scope.$$phase){
+
+							$scope.$apply();
+						}
 
 				}
 				if( type == 'myprojects'){
 
-					if($scope.projects[i].creator == creator ){
+					//Split name of the one who is logged in
+    				var splittedName = (creator).toLowerCase().split(" ");
+
+    				console.log(String($scope.projects[i].designers.split(" ")).match(String(splittedName)));
+    				console.log( 'lista', String($scope.projects[i].designers.split(" ")));
+    				console.log( 'inloggad', splittedName);
+
+    				// show my projects (either if you are the creator of the project or just a fellow designer)
+					if($scope.projects[i].creator == creator || String(($scope.projects[i].designers).toLowerCase().split(" ")).match(String(splittedName)) ){
 						$scope.filtered.push($scope.projects[i]);
-						console.log($scope.filtered);
+						
+						if(!$scope.$$phase){
+
+							$scope.$apply();
+						}
 					}
 				}
+
 	
-			}		
+			}
+	
 	}
 
 	/* Clicked project*/
 		$scope.gotoproject = function(id){
 
-			console.log(id);
 			$state.transitionTo('dashboard.thisproject', {id:id});
 
 

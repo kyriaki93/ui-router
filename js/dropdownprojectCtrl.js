@@ -34,7 +34,7 @@ app.controller('dropdownprojectCtrl', function($scope, $rootScope) {
       'date':'Concept and Prototype'
     },{
       'name': 'productdesign',
-      'date':'Product Design'
+      'date':'Video and Content'
      
        
     }]

@@ -9,7 +9,7 @@ app.controller('singlemethodCtrl', function($scope, $state, $stateParams, $rootS
  	$scope.myProjects = [];
    	var user = firebase.auth().currentUser;
 	var creator = 'no user';
-	var creatorImg = 'no img';
+	$scope.creatorImg = 'no img';
 
 
 
@@ -21,12 +21,12 @@ app.controller('singlemethodCtrl', function($scope, $state, $stateParams, $rootS
 	        if(profile.displayName == null){
 
 	            creator = profile.email;
-	            creatorImg = profile.photoURL;
+	            $scope.creatorImg = profile.photoURL;
 
 	        }else{
 	        	
 	            creator= profile.displayName;
-	            creatorImg = profile.photoURL;
+	            $scope.creatorImg = profile.photoURL;
 	        }
 
 			if(!$scope.$$phase){
@@ -110,7 +110,6 @@ app.controller('singlemethodCtrl', function($scope, $state, $stateParams, $rootS
 
 	//Läsa in de projekt från den som är inloggad!
 	const projRefObject = firebase.database().ref().child('Projects');
-			console.log(creator);
 
 	projRefObject.on('value', snap => {
 
@@ -190,7 +189,7 @@ app.controller('singlemethodCtrl', function($scope, $state, $stateParams, $rootS
 
 		newTimeline.set({
 			creator: creator,
-			creatorImg: creatorImg,
+			creatorImg: $scope.creatorImg,
 			insight: getInsight,
 			methodid: methodid,
 			methodname: $scope.methodname,

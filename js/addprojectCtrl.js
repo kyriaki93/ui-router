@@ -15,17 +15,21 @@ app.controller('addprojectCtrl', function($scope, $state) {
 			//Decide deliverable depending on type
 			if(type == 'research'){
 
-				var deliverables = "The research deliverables";
+				var deliverables = "user journey, decision basis, and roadmap.";
 
 			}else if(type == 'concept'){
 
-				var deliverables = "The concept deliverables";
+				var deliverables = "concept document, user tested prototype, and tech/planning.";
 
 			}else if(type == 'productdesign'){
 
-				var deliverables = "The product design deliverables";
+				var deliverables = "Productvideo, Photosession, and UX writing.";
 
 			}
+
+
+
+
 
 			//get which user is logged in
 			if (user != null) {

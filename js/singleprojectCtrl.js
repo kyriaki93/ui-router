@@ -9,6 +9,7 @@ app.controller('singleprojectCtrl', function($scope, $state, $stateParams, $root
   	$scope.selectedType = null;
   	var user = firebase.auth().currentUser;
 	var creator = "";
+	var creatorImg = 'no image';
 	$scope.timelineId = null;
 	$scope.header = 'Add activity';
 
@@ -20,10 +21,14 @@ app.controller('singleprojectCtrl', function($scope, $state, $stateParams, $root
 	        if(profile.displayName == null){
 
 	            creator = profile.email;
+	            creatorImg = profile.photoURL;
+
 
 	        }else{
 	        	
 	              creator= profile.displayName;
+	              creatorImg = profile.photoURL;
+
 	        }
 
 	    });
@@ -103,9 +108,14 @@ app.controller('singleprojectCtrl', function($scope, $state, $stateParams, $root
 
 							$scope.insights = '';
 						}
-						else{
+						else if(creator == $scope.timelineAll[x].creator){
 
 							$scope.insights = $scope.timelineAll[x].insight;
+
+						}else{
+
+							$scope.insights = '';
+
 						}
 					}
 				}
@@ -224,6 +234,7 @@ app.controller('singleprojectCtrl', function($scope, $state, $stateParams, $root
 
 			newTimeline.set({
     			creator: creator,
+    			creatorImg: creatorImg,
     			insight: insight,
     			methodid: $scope.methodid,
     			methodname: methodname,
@@ -246,6 +257,7 @@ app.controller('singleprojectCtrl', function($scope, $state, $stateParams, $root
 
 				if($scope.timelineId == $scope.timelineAll[y].id){
 					var methodid = $scope.timelineAll[y].methodid;
+					var timelineCreator = $scope.timelineAll[y].creator;
 				}
 				
 
@@ -257,24 +269,58 @@ app.controller('singleprojectCtrl', function($scope, $state, $stateParams, $root
 				var insight = false;
 			}
 
-			firebase.database().ref('Timeline/' + $scope.timelineId).set({
-    			creator: creator,
-    			insight: insight,
-    			methodid: methodid,
-    			methodname: $scope.header,
-    			projectid: $stateParams.id,
-    			projectname: $scope.projectname,
 
-    			//updated values
-			    status: status,
-			    insight: insight,
-			    id: $scope.timelineId
-			});
+			if(creator == timelineCreator){
+				firebase.database().ref('Timeline/' + $scope.timelineId).set({
+	    			creator: creator,
+	    			insight: insight,
+	    			methodid: methodid,
+	    			methodname: $scope.header,
+	    			projectid: $stateParams.id,
+	    			projectname: $scope.projectname,
+	    			creatorImg: creatorImg,
 
+
+	    			//updated values
+				    status: status,
+				    insight: insight,
+				    id: $scope.timelineId
+				});
+			}else{
+				var newInsight = refTimeline.push();
+
+				newInsight.set({
+	    			creator: creator,
+	    			insight: insight,
+	    			methodid: methodid,
+	    			methodname: $scope.header,
+	    			projectid: $stateParams.id,
+	    			projectname: $scope.projectname,
+	    			creatorImg: creatorImg,
+
+	    			status: status,
+	    			id: newInsight.key
+				});	
+			}
 
 			$state.reload();
 
 		}
+
+		//delete activity
+		$scope.delete = function(){
+
+
+	  		var DeleteActivity =  new firebase.database().ref('Timeline/' + $scope.timelineId)
+	  		DeleteActivity.remove();
+
+	  		$state.reload();
+
+		};
+
+
+
+		
 
 		//dropdown menu (shows my projects)
 		$scope.listVisible = false;
@@ -304,21 +350,3 @@ app.controller('singleprojectCtrl', function($scope, $state, $stateParams, $root
 });
 
 
-/*
-	this.removeTradeList = function(title){
-	
-		
-		var user = this.getUser();
-		
-		var tradingDeleteRef = new Firebase('https://dazzling-torch-7020.firebaseio.com/TradingList');
-		
-		tradingDeleteRef.on("child_added", function(snapshot) {
-  		var newPost = snapshot.val();
-  		
-  		if(newPost.User == user && newPost.Title == title){
-  				var DeleteBookref = new Firebase("https://dazzling-torch-7020.firebaseio.com/TradingList/" + newPost.id)
-  				DeleteBookref.remove();
-		
-		}});		
-	}
-*/

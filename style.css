@@ -26,10 +26,30 @@
 body{
 
   font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: #f8f8f8 !important;
+  overflow-x: hidden;
   color: #444;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+
+}
+
+nav.menu.menu--prospero {
+    margin-bottom: 0px !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    padding: 20px 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.15);
+}
+
+.menu__list{
+    padding-left: 16.66% !important;
+    max-width: 83.32% !important; 
 }
 
 h2{
@@ -38,13 +58,13 @@ h2{
 
 a {
   text-decoration: none;
-  color: #4e3c3e;
+  color: #ffcc00;
   outline: none;
 }
 
 a:hover,
 a:focus {
-  color: #f48b95;
+  color: #ffcc00;
   text-decoration: none;
 
 }
@@ -122,14 +142,114 @@ label{
 
 .custombtn:hover  {
 
-     color:  #FFFFFF;
-     border-color: none;
-     background: #ffcc00;
-     -webkit-transition: .3s ease-in-out;
+  color:  #FFFFFF;
+  border-color: none;
+  background: #ffcc00;
+  -webkit-transition: .3s ease-in-out;
 	transition: .3s ease-in-out;
 	transform: scale(1);
  }
 
+.custombtn2{
+    background: none;
+    height: 70px;
+    line-height: 10px;
+    display: inline-block;
+    float: none;
+    width: 180px;
+    padding: 0px!important;
+    font-size: 18px;
+    top: 20%;
+    text-align: center;
+    margin: 0 0 0 0;
+    color: #444444;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-appearance: none; /* for box shadows to show on iOS */
+    letter-spacing: 0.1em;
+    border:none;
+}
+
+.custombtn2:hover  {
+
+  color:  #ffcc00 !important;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  transform: scale(1);
+ }
+
+ .custombtn2 a{
+
+    color: #444444;
+
+ }
+
+ .custombtn2 a:hover{
+
+    color:  #ffcc00;
+
+ }
+.custombtn3{
+    background: none;
+    height: 70px;
+    line-height: 10px;
+    display: inline-block;
+    float: none;
+    width: 180px;
+    padding: 0px!important;
+    font-size: 18px;
+    top: 20%;
+    text-align: center;
+    margin: 0 0 0 0;
+    color: #444444;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-appearance: none; /* for box shadows to show on iOS */
+    letter-spacing: 0.1em;
+    border:none;
+}
+
+.custombtn3:hover  {
+
+  color:  #ff0000 !important;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  transform: scale(1);
+ }
+
+ .custombtn3 a{
+
+    color: #444444;
+
+ }
+
+ .custombtn3 a:hover{
+
+    color:  #ff0000 !important;
+
+ }
+/*
+.timelineProfile{
+    border-radius: 2000px;
+    margin-left: 30px;
+    float: left;
+    border: solid 2px;
+}
+*/
+.timelineProfile{
+    border-radius: 2000px;
+    float: right;
+    margin-top: 125px;
+    border: #fff solid 2px;
+}
+
+.effect-zoe:last-child {
+    margin-bottom: 50px;
+}
+
+.media:last-child {
+    margin-bottom: 50px;
+}
 
 /* HOME PAGE STYLE*/
 
@@ -156,7 +276,7 @@ label{
     right: 0;
     float: right;
     position: absolute;
-    margin-right: 0px !important;
+    margin: 0px !important;
 
 }
 
@@ -183,16 +303,18 @@ label{
 
 #projects{
 
-  	background-size: cover;
-  	height: 100vh;
+/*  	background-size: cover;
   	background: #f8f8f8;
-  	position: relative;
   	background-repeat: no-repeat;
+    */
+    position: relative;
+
+    margin-top: 60px;
 }
 
 /* Toolkit CSS */
 
-
+/*
 #spaceR, #spaceL{
 
     background-size: cover;
@@ -202,6 +324,7 @@ label{
     background-repeat: no-repeat;
 
 }
+*/
 
 *:focus {
     outline: none;
@@ -392,6 +515,7 @@ label{
 
 #addbtnmethod{
     margin: 30px;
+    margin-bottom: 50px;
 }
 
 #addmethodcolor{
@@ -595,7 +719,7 @@ drop-down > div { float: left; width: calc(100% - 30px); height: 2.7em; }
 .todo h2, .doing h2, .done h2{
     font-size: 2em !important;
     padding-left: 30px;
-    padding-top: 30px;
+    padding-top: 20px;
     font-weight: bold;
     padding-right: 30px;
 
@@ -604,6 +728,8 @@ drop-down > div { float: left; width: calc(100% - 30px); height: 2.7em; }
 .todo p, .doing p, .done p{
     padding-left: 30px;
     white-space: normal;
+    overflow: hidden;
+    max-height: 140px !important;
   }
 
 .add h1, .add p, .todo p, .todo h2 {

@@ -32,10 +32,11 @@
 	 			 		<h1>Insights</h1>
 	 			 		<p ng-if="insights.length == 0">There are no insights yet.</p>
 	 			 	</div>
-					<div class="media" ng-repeat="insight in insights" ng-if="insights.length != 0">
+					<div class="media" ng-repeat="insight in insights | orderBy: 'projectname' " ng-if="insights.length != 0">
 					  <div class="media-left">
 					    <a href="#">
-					      <img class="media-object" witdh="40px" height="40px" ng-src="{{insight.creatorImg}}" alt="...">
+					      <img class="media-object" witdh="40px" height="40px" ng-src="{{insight.creatorImg}}" alt="profileimg">
+
 					    </a>
 					  </div>
 					  <div class="media-body">
@@ -105,11 +106,12 @@
 													            <label for="radio-3" class="radio-custom-label">Done</label>
 													        </div>
 														</div>
+														<span ng-show="status == 'done'" class="action__title"  style="margin-top: 15px; float:left;" >What are the insights?</span>
 											  			<section ng-show="status == 'done'" class="bgcolor-1" id="insightarea">
 															<span class="inputtext input--haruki" id="inputinsight">
 																<textarea class="input__field input__field--haruki" id="insights" type="text" ng-model="comments"></textarea>
 																<label class="input__label input__label--haruki" id="removeLine" for="input-2">
-																	<span class="input__label-content input__label-content--haruki" id="insightlabel" >What are the insights?</span>
+																	<span class="input__label-content input__label-content--haruki" id="insightlabel" ></span>
 																</label>
 															</span>
 														

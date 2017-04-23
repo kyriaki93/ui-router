@@ -36,6 +36,12 @@ $scope.update = function(username, profileURL){
 	}, function(error) {
 	  // An error happened.
 	});
+
+	if(!$scope.$$phase){
+
+		$scope.$apply();
+	}
+	
 }
 		
 });

@@ -14,9 +14,9 @@
 					</div>
 			    </div>
 			    	<div class="col-md-3" id="projectinfo">
-				    	<img src="images/leverans.png" width="30px" alt="deliverables" style="float: left; margin-right: 10px;" /><p>This project will deliver {{deliverables}}</p>
+				    	<img src="images/leverans.png" width="30px" alt="deliverables" style="float: left; margin-right: 10px;" /><p>This project will deliver following: {{deliverables}}</p>
 				    	<br>
-						<p style="float: left;" >This project is creted by {{creator}} and the following designers are in this project {{designers}}</p>
+						<p style="float: left;" >Project creted by {{creator}} and the following designers are in this project {{designers}}</p>
 			    	</div>
 			  	<div class="col-md-2">  			
 			  	</div>
@@ -35,15 +35,19 @@
 							</div>
 							    <div class="child-element todo"  ng-repeat="tt in timelineTodo" data="{{tt.id}}" ng-click="click(tt.id)">
 							    	<h2>{{tt.methodname}}</h2>
+							    	<img class="timelineProfile" witdh="30px" height="30px" ng-src="{{tt.creatorImg}}" alt="profileimage"/>
 							    	<p>This is a planned activity, no insights yet.</p>
 							    </div>
 							    <div class="child-element doing" ng-repeat="td in timelineDoing" data="{{td.id}}" ng-click="click(td.id)">
 							    	<h2>{{td.methodname}}</h2>
+							    	<img class="timelineProfile" witdh="30px" height="30px" ng-src="{{td.creatorImg}}" alt="profileimage"/>
 							    	<p>This activity is currently in motion, an insight is comming soon. </p>
 							    </div>
 							    <div class="child-element done" ng-repeat="tdone in timelineDone" data="{{tdone.id}}" ng-click="click(tdone.id)">
 							    	<h2>{{tdone.methodname}}</h2>
+							    	<img class="timelineProfile" witdh="30px" height="30px" ng-src="{{tdone.creatorImg}}" alt="profileimage"/>
 							    	<p>{{tdone.insight}}</p>
+
 							    </div>
 						</div>
  			 	</div>
@@ -125,9 +129,12 @@
 
 										</div>
 										<div class="dialog__footer">
-
+										<center>
 											<button class="custombtn" ng-show="header == 'Add activity'" ng-click="addTimeline(selectedDate.name, status, insights)" id="addbtn">ADD</button>
-											<button class="custombtn"  ng-show="header != 'Add activity'" ng-click="edit(status, insights)" id="addbtn">UPDATE</button>
+											<button class="custombtn"  ng-show="header != 'Add activity'" ng-click="edit(status, insights)" id="addbtn" style="margin-bottom: 10px;">UPDATE</button><br>
+											<button class="custombtn3"  ng-show="header != 'Add activity'" ng-click="delete()" id="editbtn" style="margin-bottom: 0px;" >Delete</button>
+
+										</center>
 										</div>
 									</div>
 								</div>
