@@ -24,39 +24,36 @@ var app = angular.module('app', ['ui.router', 'firebase']);
                 }
             }
         })
-        .state('dashboard.toolkit', {
-            url: '/toolkit',
+        .state('dashboard.filter', {
+            url: '',
+            abstract: true,
             views: {
                 main: {
+                    templateUrl: 'partials/filter.html',
+                    controller: 'filterCtrl'
+                }
+            }
+
+        })
+
+        .state('dashboard.filter.toolkit', {
+            url: '/toolkit/:type',
+            views: {
+                content: {
                     controller: 'toolkitCtrl',
                     templateUrl: 'partials/toolkit.html'
+                    }
+                    
                 }
-            }
+
         })
-        .state('dashboard.method', {
-            url: '/method/:id',
+        
+        .state('dashboard.filter.method', {
+            url: '/toolkit/:type/:id',
             views: {
-                main: {
+                content: {
                     controller: 'singlemethodCtrl',
                     templateUrl: 'partials/singlemethod.html'
-                }
-            }
-        })
-        .state('dashboard.project', {
-            url: '/project',
-            views: {
-                main: {
-                    controller: 'projectCtrl',
-                    templateUrl: 'partials/project.html'
-                }
-            }
-        })
-        .state('dashboard.thisproject', {
-            url: '/thisproject/:id',
-            views: {
-                main: {
-                    controller: 'singleprojectCtrl',
-                    templateUrl: 'partials/singleproject.html'
                 }
             }
         })
@@ -66,6 +63,35 @@ var app = angular.module('app', ['ui.router', 'firebase']);
                 main: {
                     controller: 'addmethodCtrl',
                     templateUrl: 'partials/addmethod.html'
+                }
+            }
+        })
+        .state('dashboard.projectfilter', {
+            url: '',
+            abstract: true,
+            views: {
+                main: {
+                    templateUrl: 'partials/projectfilter.html',
+                    controller: 'filterCtrl'
+                }
+            }
+
+        })
+        .state('dashboard.projectfilter.project', {
+            url: '/project/:type',
+            views: {
+                'container': {
+                    controller: 'projectCtrl',
+                    templateUrl: 'partials/project.html'
+                }
+            }
+        })
+        .state('dashboard.projectfilter.thisproject', {
+            url: '/thisproject/:id',
+            views: {
+                'container': {
+                    controller: 'singleprojectCtrl',
+                    templateUrl: 'partials/singleproject.html'
                 }
             }
         })
@@ -95,6 +121,33 @@ var app = angular.module('app', ['ui.router', 'firebase']);
         });
 
 
+    }]
+    );
+
+
+    app.run(['$rootScope', '$location', '$window', function($rootScope, $location, $window) {
+        // initialise google analytics
+      ga('create', 'UA-97853900-1', 'auto');
+ 
+        // track pageview on state change
+        $rootScope.$on('$stateChangeSuccess', function (event) {
+            $window.ga('send', 'pageview', $location.path());
+
+        });
+
+        $rootScope.$on('$stateChangeSuccess', function (event) {
+            hj('stateChange', $location.url());
+            event.preventDefault();
+
+        });
+        
     }]);
-})();
+
+
+}
+
+)();
+
+
+
 

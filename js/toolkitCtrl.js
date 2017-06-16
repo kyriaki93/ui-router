@@ -1,16 +1,15 @@
 
-app.controller('toolkitCtrl', function($scope, $state, $stateParams, $rootScope) {
+app.controller('toolkitCtrl', function($scope, $state, $stateParams, $rootScope, $document, $location) {
   	
 
   	// get methods from firebase
   	$scope.methods = [];
-  	$scope.filtered = [];
-  	$scope.selectedType = null;
+  	$scope.typ = $stateParams.type;
  	$scope.myProjects = [];
    	var user = firebase.auth().currentUser;
 	var creator = "";
 	$scope.creatorImg = 'no img';
-
+	
 	//get who is logged in
 	if (user != null) {
 
@@ -31,16 +30,31 @@ app.controller('toolkitCtrl', function($scope, $state, $stateParams, $rootScope)
 	    });
 
 	}
+
+	//get methods
 	const dbRefObject = firebase.database().ref().child('Methods');
 
 	dbRefObject.on('value', snap => {
+
 
 		getAll = snap.val();
 
 		for(var j in getAll){
 
-			$scope.methods.push(getAll[j]);
-			console.log($scope.methods);
+			if($stateParams.type == 'all'){
+
+				$scope.methods.push(getAll[j]);
+				console.log($scope.methods);
+
+			}else if( (getAll[j].type == $stateParams.type) ){
+
+				$scope.methods.push(getAll[j]);
+				console.log($scope.methods);
+
+
+			}
+
+
 		}
 
 		if(!$scope.$$phase){
@@ -52,31 +66,16 @@ app.controller('toolkitCtrl', function($scope, $state, $stateParams, $rootScope)
 	});
 
 
-  	/* flter */
-
-	$scope.filter = function(type){
-
-			$scope.filtered = [];
-			$scope.selectedType = type;
-
-			for(var i in $scope.methods){
-
-				if(type == $scope.methods[i].type ){
-
-						$scope.filtered.push($scope.methods[i]);
-						console.log($scope.filtered);
-				}			
-			}		
-	}
-
 	/* Clicked method*/
 		$scope.gotomethod = function(id){
 
 			console.log(id);
-			$state.transitionTo('dashboard.method', {id:id});
+			$state.transitionTo('dashboard.filter.method', {id:id, type: $stateParams.type});
 
 
 		}
+
+
 	//Läsa in de projekt från den som är inloggad!
 	const projRefObject = firebase.database().ref().child('Projects');
 			console.log(creator);
@@ -104,9 +103,10 @@ app.controller('toolkitCtrl', function($scope, $state, $stateParams, $rootScope)
 
 	});
 
+
 	//POPUP
 	(function() {
-		var dialog = new DialogEl(document.getElementById('dialog-1'), {
+		var dialog = new DialogEl( document.getElementById('dialog-1'), {
 			mainElement : {
 				minscale : 0.6,
 				minopacity : 0.5,
@@ -125,6 +125,7 @@ app.controller('toolkitCtrl', function($scope, $state, $stateParams, $rootScope)
 		$scope.addMethodToolkit = function(id){
 
 			$(".dialog").css("z-index","99999");
+			$("body").css("overflow","hidden");
 
 			console.log(id);
 
@@ -143,6 +144,7 @@ app.controller('toolkitCtrl', function($scope, $state, $stateParams, $rootScope)
 		};
 
 		$(".dialog").css("z-index","-99999");
+		$("body").css("overflow-x","hidden");
 
 	})();
 

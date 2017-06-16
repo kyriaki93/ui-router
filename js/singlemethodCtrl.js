@@ -149,8 +149,14 @@ app.controller('singlemethodCtrl', function($scope, $state, $stateParams, $rootS
 		});
 
 		document.getElementById('trigger-dialog').addEventListener('click', function(ev) {
+			$(".dialog").css("z-index","99999");
+			$("body").css("overflow","hidden");
+
 			dialog.open();
 		});
+
+		$(".dialog").css("z-index","-99999");
+		
 	})();
 
 	//Add chosen method to a chosen project in 'Timeline'

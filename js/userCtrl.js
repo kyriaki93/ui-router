@@ -13,7 +13,10 @@ app.controller('userCtrl', function($scope, $state ) {
 
 			  console.log('inloggad', res);
 			  //window.location = 'http://kyriakis.se' + window.location.pathname + '#/project';
-			  $state.transitionTo('dashboard.project', {arg:'arg'});
+			  
+			  $state.transitionTo('dashboard.projectfilter.project', {type:'myprojects'});
+
+			  //$state.transitionTo('dashboard.filter', {arg:'arg'});
 
 			  }).catch(function(error) {
   			  		// Handle Errors here.

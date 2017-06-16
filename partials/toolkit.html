@@ -1,31 +1,11 @@
 <div class="row">
 	<div class="col-md-2" id="spaceL">
 	</div>
-	    <div class="col-md-8 col-xs-12" id="projects">
-				<section class="contentSearch bgcolor-1">
-					<span class="glyphicon glyphicon-search"></span>
-						<span class="inputSearch input--haruki">
-							<input class="input__field input__field--haruki" type="text" lang="search" id="input-1" ng-model="searchWord" placeholder="Search for activities, materials, time or difficulty" />
-							<label class="input__label input__label--haruki" for="input-1">
-								<span class="input__label-content input__label-content--haruki" id="searchthingi"></span>
-							</label>
-						</span>
-				</section>
-				<section class="fitler">
-		            <ul class="filter_menu">
-		              <li class="filter_item"><a  id="all" ng-click="filter(null)" ng-class="{'active': selectedType == null}" >All</a></li>
-		              <li class="filter_item"><a  id="research" ng-click="filter('research')" ng-class="{'active': selectedType == 'research'}"> Research</a></li>
-		              <li class="filter_item"><a  id="insight" ng-click="filter('insight')"  ng-class="{'active': selectedType == 'insight'}">Insight</a></li>
-		              <li class="filter_item"><a  id="strategy" ng-click="filter('strategy')"  ng-class="{'active': selectedType == 'strategy'}">Strategy</a></li>
-		              <li class="filter_item"><a  id="proof" ng-click="filter('proof')"  ng-class="{'active': selectedType == 'proof'}">Proof of Concept</a></li>
-		              <li class="filter_item"><a  id="define" ng-click="filter('define')"  ng-class="{'active': selectedType == 'define'}">Define</a></li>
-		              <li class="filter_item"><a  id= "productdesign" ng-click="filter('productdesign')"  ng-class="{'active': selectedType == 'productdesign'}">Product Design</a></li>
-		              <li class="filter_item"><a  id="other" ng-click="filter('other')"  ng-class="{'active': selectedType == 'other'}">Other</a></li>
-		            </ul>
-				</section>
+	    <div class="col-md-8 col-xs-12" id="projects" style="margin-top: 0;">
+
 
 				<div class="grid">
-					<figure class="effect-zoe" ng-if="selectedType == null || filtered.length == 0">
+					<figure class="effect-zoe" ng-if="typ == 'all' || methods.length == 0" id="actionAddNewMethod">
 						<a ui-sref="dashboard.addmethod" ><img class="addimage" src="images/add.png" alt="nope" /></a>
 							<figcaption>
 								<h2>Add new method</h2>
@@ -34,25 +14,13 @@
 								</p>
 							</figcaption>			
 					</figure>
-					<figure class="effect-zoe" ng-repeat="method in filtered | filter:searchWord">
-						<div>
-							<img ng-click="gotomethod(method.id)" src="images/rectangle.png" alt="nope"/>
-								<figcaption>
-									<h2 ng-click="gotomethod(method.id)" >{{method.name}}</h2>
-									<p class="icon-links">
-										<a><span class="icon-heart"><img ng-click="addMethodToolkit(method.id)" src="images/round_btn.png" id="addicon" style="width: 20px; height: 20px;"></span></a>
-									</p>
-									<p class="description" ng-click="gotomethod(method.id)" >{{method.shortdesc}}</p>
-								</figcaption>
-							</div>		
-					</figure>
 					<figure class="effect-zoe" ng-repeat="method in methods | filter:searchWord " ng-if="selectedType == null">
 						<div >
 							<img src="images/rectangle.png" alt="nope" ng-click="gotomethod(method.id)"/>
 								<figcaption>
 									<h2 ng-click="gotomethod(method.id)" >{{method.name}}</h2>
 									<p class="icon-links">
-										<a ><span class="icon-heart"><img ng-click="addMethodToolkit(method.id)" src="images/round_btn.png" id="addicon" style="width: 20px; height: 20px;z-index: 999999999;"></span></a>
+										<a ><span class="icon-heart"><img ng-click="addMethodToolkit(method.id)" src="images/round_btn.png" id="addMethodFromToolkit" style="width: 20px; height: 20px;z-index: 999999999;"></span></a>
 									</p>
 									<p class="description" ng-click="gotomethod(method.id)" >{{method.shortdesc}}</p>
 								</figcaption>	
@@ -64,6 +32,7 @@
   	<div class="col-md-2" id="spaceR">  			
   	</div>
  </div> 
+ <div ui-view="info"></div>
 
  			<div class="container">
 			 			<div class="dialog" id="dialog-1">
@@ -75,7 +44,7 @@
 											<h4 style="margin-bottom: 0px;">Add this activity to your project</h4>
 											<h1>{{methodname}}</h1>
 											<button class="action action--close">
-												<i ng-click="closePopupToolkit()" class="icon icon--cross"></i>
+												<i ng-click="closePopupToolkit()" class="icon icon--cross" id="closeAddWindowFromToolkit" ></i>
 												<span class="text-hidden">Close dialog</span>
 											</button>
 										</div>
@@ -137,7 +106,7 @@
 
 										</div>
 										<div class="dialog__footer">
-											<button class="custombtn" ng-click="addTimeline(selectedDate.name, status, comments)" id="addbtn">ADD</button>
+											<button class="custombtn" ng-click="addTimeline(selectedDate.name, status, comments)" id="addedMethodFromToolkit" style="margin: 0 30px 30px 30px;" >ADD</button>
 										</div>
 									</div>
 								</div>

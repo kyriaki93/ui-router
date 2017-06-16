@@ -29,7 +29,7 @@ app.controller('addprojectCtrl', function($scope, $state) {
 
 
 
-
+			var date = Date();
 
 			//get which user is logged in
 			if (user != null) {
@@ -57,11 +57,12 @@ app.controller('addprojectCtrl', function($scope, $state) {
     			creator: creator,
     			deliverables: deliverables,
     			brief: brief,
-    			id: newMethod.key
+    			id: newMethod.key,
+    			date: date
 			});
 
 			//window.location = 'http://kyriakis.se' + window.location.pathname + '#/project';
-			$state.transitionTo('dashboard.project', {});
+			$state.transitionTo('dashboard.projectfilter.project', {type: 'myprojects'});
 
 		} 
 });

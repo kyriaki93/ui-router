@@ -12,6 +12,7 @@ app.controller('singleprojectCtrl', function($scope, $state, $stateParams, $root
 	var creatorImg = 'no image';
 	$scope.timelineId = null;
 	$scope.header = 'Add activity';
+	$scope.checkCreator = "";
 
 	//get who is logged in
 	if (user != null) {
@@ -24,10 +25,13 @@ app.controller('singleprojectCtrl', function($scope, $state, $stateParams, $root
 	            creatorImg = profile.photoURL;
 
 
+
 	        }else{
 	        	
 	              creator= profile.displayName;
 	              creatorImg = profile.photoURL;
+	              $scope.checkCreator= profile.displayName;
+
 
 	        }
 
@@ -93,6 +97,7 @@ app.controller('singleprojectCtrl', function($scope, $state, $stateParams, $root
 		$scope.click = function(id){
 
 			$(".dialog").css("z-index","99999");
+			$("body").css("overflow","hidden");
 
 			$scope.timelineId = id;
 
@@ -136,6 +141,8 @@ app.controller('singleprojectCtrl', function($scope, $state, $stateParams, $root
 		}
 
 		$(".dialog").css("z-index","-99999");
+		$("body").css("overflow-x","hidden");
+
 
 	})();
 
@@ -203,9 +210,29 @@ app.controller('singleprojectCtrl', function($scope, $state, $stateParams, $root
         $('.timeline').animate({
             scrollLeft: current + left
         }, 200);
+
+
+    });
+
+    //drag timeline
+    $('div#arrowL').click(function(){
+          
+          $('.timeline').animate({'left':'+=300px'});
+          $(".timeline").css("overflow-x","visible");
+          console.log('click');
+
+       
     });
 
 
+    $('div#arrowR').click(function(){
+          
+          $('.timeline').animate({'left':'-=300px'});
+          $(".timeline").css("overflow-x","visible");
+                    console.log('click');
+
+       
+    });
 
 
 		//Add a new activiry to timeling

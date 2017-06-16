@@ -2,30 +2,45 @@
 <link rel="stylesheet" type="text/css" href="css/transformation.css" />
 
 <div class="row">
-	 <div class="col-md-12 col-xs-12" id="projects">
+	 <div class="col-md-12 col-xs-12" id="projects" style="margin-top: 0;">
 		<div class="row">
 			<div class="col-md-2">
 			</div>
 			    <div class="col-md-5">
-				    <div class="methoddesc">
+				    <div class="methoddesc" style="margin-top: 30px;">
 						<h5 style="text-transform: capitalize;">{{type}}</h5>
 						<h1>{{projectname}}</h1>
 						<p>{{brief}}</p>		
 					</div>
 			    </div>
-			    	<div class="col-md-3" id="projectinfo">
-				    	<img src="images/leverans.png" width="30px" alt="deliverables" style="float: left; margin-right: 10px;" /><p>This project will deliver following: {{deliverables}}</p>
+			    	<div class="col-md-3" id="projectinfo" style="margin-top: 105px;">
+				    	<!-- <img src="images/leverans.png" width="30px" alt="deliverables" style="float: left; margin-right: 10px;" /> --> <h5 style="font-weight: bold;">Deliverables</h5><p style="text-transform: capitalize;"> {{deliverables}}</p>
 				    	<br>
-						<p style="float: left;" >Project creted by {{creator}} and the following designers are in this project {{designers}}</p>
+						<p style="float: left;" ><h5 style="font-weight: bold;" >Designers</h5><p style="text-transform: capitalize; margin: 0 0 0 0;" >{{creator}}, {{designers}}</p>
 			    	</div>
 			  	<div class="col-md-2">  			
 			  	</div>
  		</div> 
  		<div class="row">
+ 		 	
  			<div class="col-md-2"></div>
  			<div class="col-md-8">
- 				<div class="timelinestyle">
- 			 		<h1>Timeline</h1>
+ 				<h1 style="margin-top: 60px;margin-bottom: 10px;font-weight: bold;font-size: 4em;" >Activities</h1>
+ 			</div>
+
+ 			<div class="col-md-12">
+ 				 	<div class="row">
+ 			 			<div ng-show="checkCreator == 'Christian Appel' ">
+	 			 			<div class="col-md-1">
+			 					<div id="arrowL" style="color:#444; width: 30px;margin-left: 10px;cursor: pointer;">Left</div>
+			 				</div>
+			 				<div class="col-md-10"></div>
+			 				<div class="col-md-1">
+								<div id="arrowR" style="color:#444; width: 30px;margin-right: 10px;float: right;cursor: pointer;">Right</div>
+							</div>
+						</div>
+					</div>
+ 				<div class="timelinestyle" style="margin-top: 10px;margin-bottom: 60px;" >
 						<div class="timeline" >
 							<div class="child-element add" id="addActivity" ng-click="click()">
 								<center>
@@ -33,23 +48,24 @@
 									<p>Add Activity</p>
 								</center>
 							</div>
-							    <div class="child-element todo"  ng-repeat="tt in timelineTodo" data="{{tt.id}}" ng-click="click(tt.id)">
+							    <div class="child-element todo"  ng-repeat="tt in timelineTodo" data="{{tt.id}}" ng-click="click(tt.id)" id="clickOnTodoActivity">
 							    	<h2>{{tt.methodname}}</h2>
 							    	<img class="timelineProfile" witdh="30px" height="30px" ng-src="{{tt.creatorImg}}" alt="profileimage"/>
 							    	<p>This is a planned activity, no insights yet.</p>
 							    </div>
-							    <div class="child-element doing" ng-repeat="td in timelineDoing" data="{{td.id}}" ng-click="click(td.id)">
+							    <div class="child-element doing" ng-repeat="td in timelineDoing" data="{{td.id}}" ng-click="click(td.id)" id="clickOnDoingActivity">
 							    	<h2>{{td.methodname}}</h2>
 							    	<img class="timelineProfile" witdh="30px" height="30px" ng-src="{{td.creatorImg}}" alt="profileimage"/>
 							    	<p>This activity is currently in motion, an insight is comming soon. </p>
 							    </div>
-							    <div class="child-element done" ng-repeat="tdone in timelineDone" data="{{tdone.id}}" ng-click="click(tdone.id)">
+							    <div class="child-element done" ng-repeat="tdone in timelineDone" data="{{tdone.id}}" ng-click="click(tdone.id)" id="clickOnDoneActivity">
 							    	<h2>{{tdone.methodname}}</h2>
 							    	<img class="timelineProfile" witdh="30px" height="30px" ng-src="{{tdone.creatorImg}}" alt="profileimage"/>
 							    	<p>{{tdone.insight}}</p>
 
 							    </div>
 						</div>
+
  			 	</div>
  			</div>
  		</div>
@@ -66,7 +82,7 @@
 											<h4 ng-if=" header != 'Add activity' " style="margin-bottom: 0px;" >Edit activity</h4>
 											<h1>{{header}}</h1>
 											<button class="action action--close">
-												<i class="icon icon--cross" ng-click="close()"></i>
+												<i class="icon icon--cross" ng-click="close()" id="exitEditOrAddActivty"></i>
 												<span class="text-hidden">Close dialog</span>
 											</button>
 										</div>
@@ -94,10 +110,15 @@
 														    </div>
 														  </div>
 														</div>
+														<a ui-sref="dashboard.addmethod" ><!--<img src="images/addbtn.png" alt="addbtn" width="15px" style="margin-right: 10px; float:left;cursor: pointer;margin-top: 40px;" >--><h5 style="float: left;
+															    font-weight: 600;
+															    color: #444;
+															    margin-top: 40px;">Can't find activity? Create your own </h5><h5 style="text-decoration: underline;float: left;font-weight: 600;color: #444;margin-top: 40px;margin-left: 5px;"> here</h5>
+														</a>
 												</div>
-												<div class="mover__element">
+												<div class="mover__element" style="float:left;">
 														<span class="action__title" ng-if=" header != 'Add activity' "  style="margin-top: 0px;" >Update the status of the activity?</span>
-														<span class="action__title" ng-if=" header == 'Add activity' " >What is the status of the activity?</span>
+														<span class="action__title" ng-if=" header == 'Add activity' " style="margin-top: 30px;">What is the status of the activity?</span>
 														<div class="choosestatus">
 															<div>
 													            <input id="radio-1" class="radio-custom" name="todo" type="radio"  value="todo" ng-model="status" checked>
@@ -122,6 +143,7 @@
 															</span>
 														
 														</section>
+				
 												</div>
 
 											</div>
@@ -130,9 +152,9 @@
 										</div>
 										<div class="dialog__footer">
 										<center>
-											<button class="custombtn" ng-show="header == 'Add activity'" ng-click="addTimeline(selectedDate.name, status, insights)" id="addbtn">ADD</button>
-											<button class="custombtn"  ng-show="header != 'Add activity'" ng-click="edit(status, insights)" id="addbtn" style="margin-bottom: 10px;">UPDATE</button><br>
-											<button class="custombtn3"  ng-show="header != 'Add activity'" ng-click="delete()" id="editbtn" style="margin-bottom: 0px;" >Delete</button>
+											<button class="custombtn" ng-show="header == 'Add activity'" ng-click="addTimeline(selectedDate.name, status, insights)" style="margin: 0 30px 30px 30px;" id="AddedNewActivityFromSingleProject">ADD</button>
+											<button class="custombtn"  ng-show="header != 'Add activity'" ng-click="edit(status, insights)" style="margin-bottom: 10px margin-top:0px; " id="EditNewActivityFromSingleProject">UPDATE</button><br>
+											<button class="custombtn3"  ng-show="header != 'Add activity'" ng-click="delete()" id="DeleteActivityFromSingleProject" style="margin-bottom: 0px;" >Delete</button>
 
 										</center>
 										</div>

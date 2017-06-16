@@ -3,6 +3,7 @@ app.controller('headerCtrl', function($scope) {
 
   var user = firebase.auth().currentUser;
 
+
 // Hämta email från användare
   if (user != null) {
 
@@ -38,9 +39,6 @@ $(document).ready(
     $(".menu__item").removeClass("menu__item--current");
     $(this).addClass("menu__item--current");
   }));
-
-
-
 
 	
 });

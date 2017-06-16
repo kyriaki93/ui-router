@@ -1,0 +1,27 @@
+<div class="row">
+	<div class="col-md-2" id="spaceL">
+	</div>
+	    <div class="col-md-8 col-xs-12" style="margin-top: 60px;" >
+				<section class="contentSearch bgcolor-1">
+					<span class="glyphicon glyphicon-search"></span>
+						<span class="inputSearch input--haruki">
+							<input class="input__field input__field--haruki" type="text" lang="search" id="input-1" ng-model="searchWord" placeholder="Search for projects and designers" />
+							<label class="input__label input__label--haruki" for="input-1">
+								<span class="input__label-content input__label-content--haruki" id="searchthingi"></span>
+							</label>
+						</span>
+				</section>
+				<section class="fitler">
+		            <ul class="filter_menu">
+		              <li class="filter_item"><a  id="myprojects" ui-sref="dashboard.projectfilter.project({type: 'myprojects'})" ng-click="active('myprojects')" >My projects</a></li>
+		              <li class="filter_item"><a  id="research" ui-sref="dashboard.projectfilter.project({type: 'research'})" ng-click="active('research')" > Research and Planning</a></li>
+		              <li class="filter_item"><a  id="concept" ui-sref="dashboard.projectfilter.project({type: 'concept'})"  ng-click="active('concept')">Concept and Prototype</a></li>
+		              <li class="filter_item"><a  id="productdesign" ui-sref="dashboard.projectfilter.project({type: 'productdesign'})"  ng-click="active('productdesign')">Video and Content</a></li>
+		              <li class="filter_item"><a  id="all" ui-sref="dashboard.projectfilter.project({type: 'all'})" ng-click="active('all')" >All</a></li>
+		            </ul>
+				</section>
+
+		</div>
+</div>
+
+<div ui-view="container"></div>

@@ -26,22 +26,13 @@ app.controller('dropdownCtrl', function($scope, $rootScope) {
 
     $scope.monthShowArray = [{
       'name': 'research',
-      'date':'Research'
+      'date':'Research and Planning'
     },{
       'name': 'insight',
-      'date':'Insight'
+      'date':'Concept and Prototype'
     },{
       'name': 'strategy',
-      'date':'Strategy'
-     },{
-      'name': 'proof',
-      'date':'Proof of Concept'
-      },{
-      'name': 'define',
-      'date':'Define'
-    },{
-      'name': 'productdesign',
-      'date':'Product Design'
+      'date':'Video and Content'
       },{
       'name': 'other',
       'date':'Other'

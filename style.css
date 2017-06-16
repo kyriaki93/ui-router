@@ -35,6 +35,13 @@ body{
 
 }
 
+#dropdown-list > div{
+
+  height: 250px;
+  overflow: auto;
+
+}
+
 nav.menu.menu--prospero {
     margin-bottom: 0px !important;
     position: fixed;
@@ -236,6 +243,16 @@ label{
     border: solid 2px;
 }
 */
+
+figure.effect-zoe h2 {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    /* max-height: 140px !important; */
+    text-overflow: ellipsis;
+    /* margin-right: 20px; */
+}
+
 .timelineProfile{
     border-radius: 2000px;
     float: right;
@@ -249,6 +266,10 @@ label{
 
 .media:last-child {
     margin-bottom: 50px;
+}
+
+.input {    
+  webkit-appearance: none;
 }
 
 /* HOME PAGE STYLE*/

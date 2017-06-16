@@ -1,11 +1,13 @@
 
+<div ng-controller="toolkitCtrl">
+
 <div class="row">
-	 <div class="col-md-12 col-xs-12" id="projects">
+	 <div class="col-md-12 col-xs-12" id="projects" style="margin-top: 0">
 		<div class="row">
 			<div class="col-md-2">
 			</div>
 			    <div class="col-md-6">
-				    <div class="methoddesc">
+				    <div class="methoddesc" id="addMethodFromSingleMethod">
 						<img id="trigger-dialog" src="images/addbtn.png" alt="addbtn" width="20px" style="margin-right: 10px; float:left;cursor: pointer;" ><h4>Add this method to a project</h4>
 						<h1>{{methodname}}</h1>
 						<p>{{longdesc}}</p>		
@@ -27,9 +29,9 @@
  		<div class="row">
  			<div class="col-md-2"></div>
  			<div class="col-md-6">
- 				<div class="methodinsight">
+ 				<div class="methodinsight" style="margin-top: 0">
  					<div>
-	 			 		<h1>Insights</h1>
+	 			 		<h1>Insights from projects</h1>
 	 			 		<p ng-if="insights.length == 0">There are no insights yet.</p>
 	 			 	</div>
 					<div class="media" ng-repeat="insight in insights | orderBy: 'projectname' " ng-if="insights.length != 0">
@@ -61,7 +63,7 @@
 											<h4 style="margin-bottom: 0px;">Add this activity to your project</h4>
 											<h1>{{methodname}}</h1>
 											<button class="action action--close">
-												<i class="icon icon--cross"></i>
+												<i class="icon icon--cross" id="closeAddActivityFromSingleMethod"></i>
 												<span class="text-hidden">Close dialog</span>
 											</button>
 										</div>
@@ -123,7 +125,7 @@
 
 										</div>
 										<div class="dialog__footer">
-											<button class="custombtn" ng-click="addTimeline(selectedDate.name, status, comments)" id="addbtn">ADD</button>
+											<button class="custombtn" ng-click="addTimeline(selectedDate.name, status, comments)" id="addActivtyFromSignleMethod" style="margin: 0 30px 30px 30px;" >ADD</button>
 										</div>
 									</div>
 								</div>

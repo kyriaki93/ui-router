@@ -13,6 +13,8 @@ app.controller('addmethodCtrl', function($scope, $state) {
 			console.log(materials);
 			console.log(type);
 
+			var date = Date();
+
 			var newMethod = refMethod.push();
 
 			newMethod.set({
@@ -24,11 +26,12 @@ app.controller('addmethodCtrl', function($scope, $state) {
     			time: time,
     			group: group,
     			longdesc: longdesc,
-    			id: newMethod.key
+    			id: newMethod.key,
+    			date: date
 			});
 
 			//window.location = 'http://kyriakis.se' + window.location.pathname + '#/toolkit';
-			$state.transitionTo('dashboard.toolkit', {});
+			$state.transitionTo('dashboard.filter.toolkit', {type:'all'});
 
 		} 
 });

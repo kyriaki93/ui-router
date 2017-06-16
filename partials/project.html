@@ -2,28 +2,9 @@
 <div class="row">
 	<div class="col-md-2" id="spaceL">
 	</div>
-	    <div class="col-md-8 col-xs-12" id="projects">
-				<section class="contentSearch bgcolor-1">
-					<span class="glyphicon glyphicon-search"></span>
-						<span class="inputSearch input--haruki">
-							<input class="input__field input__field--haruki" type="text" lang="search" id="input-1" ng-model="searchWord" placeholder="Search for projects and designers" />
-							<label class="input__label input__label--haruki" for="input-1">
-								<span class="input__label-content input__label-content--haruki" id="searchthingi"></span>
-							</label>
-						</span>
-				</section>
-				<section class="fitler">
-		            <ul class="filter_menu">
-		              <li class="filter_item"><a  id="myprojects" ng-click="filter('myprojects')" ng-class="{'active': selectedType == 'myprojects'}" >My projects</a></li>
-		              <li class="filter_item"><a  id="research" ng-click="filter('research')" ng-class="{'active': selectedType == 'research'}"> Research and Planning</a></li>
-		              <li class="filter_item"><a  id="concept" ng-click="filter('concept')"  ng-class="{'active': selectedType == 'concept'}">Concept and Prototype</a></li>
-		              <li class="filter_item"><a  id="productdesign" ng-click="filter('productdesign')"  ng-class="{'active': selectedType == 'productdesign'}">Video and Content</a></li>
-		              <li class="filter_item"><a  id="all" ng-click="filter('all')"  ng-class="{'active': selectedType == 'all'}">All</a></li>
-		            </ul>
-				</section>
-
+	    <div class="col-md-8 col-xs-12" id="projects" style="margin-top: 0">
 				<div class="grid">
-					<figure class="effect-zoe" ng-if="selectedType == 'myprojects' || filtered.length == 0 || projects.length == 0 ">
+					<figure class="effect-zoe" ng-if=" typ == 'myprojects' || projects.length == 0 ">
 						<a ui-sref="dashboard.addproject" ><img class="addimage" src="images/add.png" alt="nope"/></a>
 							<figcaption>
 								<h2>Add new project</h2>
@@ -32,25 +13,14 @@
 								</p>
 							</figcaption>			
 					</figure>
-					<figure class="effect-zoe" ng-repeat="project in filtered | filter:searchWord">
+					<figure class="effect-zoe" ng-repeat="project in projects | filter:searchWord " >
 						<div ng-click="gotoproject(project.id)">
 							<a><img src="images/rectangle.png" alt="nope"/></a>
 								<figcaption>
 									<h2>{{project.name}}</h2>
 									<p class="icon-links">
 									</p>
-									<p class="description">Flowing designers are in this project: {{project.creator}}, {{project.designers}}</p>
-								</figcaption>	
-							</div>		
-					</figure>
-					<figure class="effect-zoe" ng-repeat="project in projects | filter:searchWord " ng-if="selectedType == 'all'">
-						<div ng-click="gotoproject(project.id)">
-							<a><img src="images/rectangle.png" alt="nope"/></a>
-								<figcaption>
-									<h2>{{project.name}}</h2>
-									<p class="icon-links">
-									</p>
-									<p class="description">Flowing designers are in this project: {{project.creator}}, {{project.designers}}</p>
+									<p class="description">Designers in this project: {{project.creator}}, {{project.designers}}</p>
 								</figcaption>
 							</div>	
 					</figure>
